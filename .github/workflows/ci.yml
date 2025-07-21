@@ -39,24 +39,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install flask requests pytest
 
-     # - name: Verify pytest is available
-     #   run: |
-     #     pytest --version
-
-      #- name: Run Python tests
-      #  run: |
-      #  pytest integration/tests/
-
-      - name: Build Docker containers
+      - name: Verify pytest is available
         run: |
-          docker compose -f docker-compose.yml build
+          pytest --version
+
+      - name: Run Python tests
+        run: |
+        pytest integration/tests/
+
+      #- name: Build Docker containers
+      #  run: |
+      #  docker compose -f docker-compose.yml build
 
       # Optional future steps:
-      # - name: Frontend lint/build
-      # - name: Compile Haskell logic
-      # - name: Run Prolog tests
-      # - name: Accessibility checks
-      # - name: Code coverage upload
+       - name: Frontend lint/build
+       - name: Compile Haskell logic
+       - name: Run Prolog tests
+       - name: Accessibility checks
+       - name: Code coverage upload
 
       - name: Confirm PostgreSQL Service
         run: |
