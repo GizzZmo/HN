@@ -8,7 +8,7 @@ curl -X POST -H "Content-Type: application/json" \
     http://localhost:5000/empathy-query
 
 
-
+```
 //**
 ## Harmonia Nexus is a conceptual application designed to foster world peace not by enforcing it, but by cultivating deep empathy, shared understanding, and the recognition of common humanity beneath layers of difference. It operates on the profound principle: **Peace is not the absence of conflict, but the presence of understanding.**
 
