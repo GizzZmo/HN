@@ -1,0 +1,6 @@
+# Dockerfile for empathy-query API
+FROM python:3.11-slim
+WORKDIR /app
+COPY integration/api_server.py .
+RUN pip install flask
+CMD ["python", "api_server.py"]
