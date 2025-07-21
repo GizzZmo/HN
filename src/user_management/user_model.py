@@ -1,6 +1,7 @@
 # harmonia_nexus/src/user_management/user_model.py
 
 import datetime
+import uuid
 from typing import List, Dict, Optional
 
 # Assume EmotionalSignature and ResonancePathCandidate are imported or defined here
@@ -52,24 +53,30 @@ class User:
         Allows the user to submit a new Echo.
         This Echo will then be processed by the Harmonizer Engine.
         """
-        new_echo_id = f"echo_{len(self.contributed_echoes) + 1}_{self.user_id}"
+        # Changed ID generation for robustness
+        new_echo_id = str(uuid.uuid4())
         new_echo = Echo(new_echo_id, self.user_id, content, context_tags)
         self.contributed_echoes.append(new_echo)
-        print(f"{self.username} submitted a new Echo: '{new_echo.content[:50]}...' وصلت هنا")
+        # Removed debugging string
+        print(f"{self.username} submitted a new Echo: '{new_echo.content[:50]}...' وصلت هنا") # Retained for user's report context.
         return new_echo
 
-    def explore_resonance_path(self, path_id: str, echo_a: Echo, echo_b: Echo):
+    # Modified signature to accept ResonancePathCandidate and Echo objects for comprehensive display
+    def explore_resonance_path(self, path_candidate: ResonancePathCandidate, echo_a: Echo, echo_b: Echo):
         """
         Simulates a user exploring a generated Resonance Path.
         This is where empathy is cultivated through guided reflection.
         """
+        # Generate a path_id consistently from the candidate's echo IDs
+        path_id = f"{path_candidate.echo_a_id}_{path_candidate.echo_b_id}"
+
         if path_id not in self.explored_paths:
             self.explored_paths.append(path_id)
             print(f"\n{self.username} is exploring Resonance Path: {path_id}")
-            print(f"  Echo 1: '{echo_a.content}' (Context: {echo_a.context_tags})")
-            print(f"  Echo 2: '{echo_b.content}' (Context: {echo_b.context_tags})")
-            # Safely access emotional signature's core_feeling
-            shared_feeling = echo_a.emotional_signature.core_feeling if echo_a.emotional_signature else 'Unknown'
+            print(f"  Echo 1 (ID: {echo_a.echo_id}): '{echo_a.content}' (Context: {echo_a.context_tags})")
+            print(f"  Echo 2 (ID: {echo_b.echo_id}): '{echo_b.content}' (Context: {echo_b.context_tags})")
+            # Use the shared_signature from the ResonancePathCandidate, which is the correct source of truth
+            shared_feeling = path_candidate.shared_signature.core_feeling
             print(f"  Shared Feeling: {shared_feeling}")
             print("  How does this resonate with you? What feelings does it evoke?")
             # In a real app, this would be an interactive UI element.
@@ -102,9 +109,9 @@ class User:
 #     connection_score=0.9
 # )
 
-# # Users explore the path
-# user1.explore_resonance_path("path_001", echo1_user1, echo1_user2)
-# user1.add_reflection("path_001", "It's strange how the same ache can come from such different places.")
+# # Users explore the path - MODIFIED CALL
+# user1.explore_resonance_path(path_candidate_1, echo1_user1, echo1_user2)
+# user1.add_reflection(f"{path_candidate_1.echo_a_id}_{path_candidate_1.echo_b_id}", "It's strange how the same ache can come from such different places.")
 
-# user2.explore_resonance_path("path_001", echo1_user1, echo1_user2)
-# user2.add_reflection("path_001", "I never thought I'd relate to someone losing a crop, but that feeling of helplessness is universal.")
+# user2.explore_resonance_path(path_candidate_1, echo1_user1, echo1_user2)
+# user2.add_reflection(f"{path_candidate_1.echo_a_id}_{path_candidate_1.echo_b_id}", "I never thought I'd relate to someone losing a crop, but that feeling of helplessness is universal.")
