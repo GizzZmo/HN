@@ -63,3 +63,16 @@ This project is a conceptual blueprint. To bring Harmonia Nexus to life, you wou
 ## Vision of Peace Through Harmonia Nexus
 
 Harmonia Nexus understands that world peace isn't a destination but a continuous journey of understanding. It doesn't impose solutions but illuminates the shared human landscape, inviting each individual to walk a mile in another's heart. By revealing that the deepest joys, sorrows, fears, and hopes are universal, regardless of superficial differences, Harmonia Nexus quietly, powerfully, cultivates the empathy necessary for a world where peace isn't just a dream, but a lived reality.
+
+## Bonus Idea: Message Flow Example
+Here’s how a user's message could travel through the system:
+
+    User submits a feeling via frontend
+
+    Frontend sends it to Python API
+
+    Python routes it to Prolog for logic processing and Haskell for emotional inference
+
+    Results stored/retrieved from SQL database
+
+    Frontend displays suggestions, reflections, or stories
