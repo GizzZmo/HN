@@ -1,0 +1,26 @@
+{
+  "name": "harmonia-nexus",
+  "version": "1.0.0",
+  "description": "Harmonia Nexus: The Echo Chamber of Shared Humanity - A conceptual project fostering empathy across diverse experiences.",
+  "main": "web/js/app.js",
+  "scripts": {
+    "start": "echo 'This project is multi-paradigm. To run, you would need Haskell, Python, Prolog environments, and a web server for the frontend.'",
+    "build:ts": "tsc -p web/tsconfig.json",
+    "watch:ts": "tsc -w -p web/tsconfig.json"
+  },
+  "keywords": [
+    "peace",
+    "empathy",
+    "haskell",
+    "python",
+    "prolog",
+    "sql",
+    "multi-paradigm",
+    "web-app"
+  ],
+  "author": "AI Project Generator",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
