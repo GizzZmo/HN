@@ -1,6 +1,11 @@
 import pytest
+import sys
 from flask import Flask
 from integration.api_server import app
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from api_server import app
 
 @pytest.fixture
 def client():
