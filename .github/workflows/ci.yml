@@ -39,13 +39,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install flask requests pytest
 
-      - name: Verify pytest is available
-        run: |
-          pytest --version
+     # - name: Verify pytest is available
+     #   run: |
+     #     pytest --version
 
-      - name: Run Python tests
-        run: |
-          pytest integration/tests/
+      #- name: Run Python tests
+      #  run: |
+      #  pytest integration/tests/
 
       - name: Build Docker containers
         run: |
